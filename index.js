@@ -132,13 +132,58 @@ function undef() {
 console.log("undef():", undef())
 
 array.forEach(function (elem) {
-    console.log(" elem:", elem)
+    console.log("elem:", elem)
 })
 
 function printElem(elem) {
-    console.log(" elem:", elem)
+    console.log("elem:", elem)
 }
 array.forEach(printElem)
 
 var funcs = [printElem, foo, anon, add]
 console.log("funcs:", funcs)
+
+console.log("==========================")
+console.log("== Objects")
+console.log("==========================")
+
+var person = {
+    firstName: "Luke",
+    lastName: "Skywalker",
+    getFullName: function () {
+       return this.lastName + ", " + this.firstName
+    }
+}
+console.log("person:", person)
+console.log("person.firstName:", person.firstName)
+
+person.middleName = "???"
+console.log("person:", person)
+
+console.log("getFullFame:", person.getFullName())
+
+var person2 = {
+    firstName: "Leia",
+    lastName: "Organa",
+    getFullName: function () {
+       return this.lastName + ", " + this.firstName
+    }
+}
+console.log("person2:", person2)
+
+function Person(firstName, lastName) { //This is a class constructor (creates a class)
+    this.firstName = firstName
+    this.lastName = lastName
+}
+
+Person.prototype.getFullName = function () {
+    return this.lastName + ", " + this.firstName
+}
+
+var p = new Person("Han", "Solo") //Creates a new entry into the "Person" class.
+console.log("p:", p)
+console.log("p.getFullName:", p.getFullName())
+
+var p2 = new Person("Rey", "???")
+console.log("p2:", p2)
+console.log("p2.getFullName:", p2.getFullName())
